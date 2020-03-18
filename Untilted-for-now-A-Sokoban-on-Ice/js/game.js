@@ -1,87 +1,69 @@
 class Game {
-    constructor(canvas) {
+    constructor(canvas, map) {
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
         this.width = canvas.width;
         this.height = canvas.height;
         // referencing the game (this) inside the player class
-        this.player = new Player(this);
-        this.player.setControls(); // calls a method of the player within the game constructor
-        this.tiles = [];
+        this.currentSecond = 0;
+        this.frameCount = 0;
+        this.framesLastSecond = 0;
+        this.lastFrameTime = 0;
+        this.timeElapsed = 0
+        this.currentFrameTime;
         this.animationId;
-        this.frame = 0;
+        this.map = map;
         this.gameOn = true;
-    }
-
-    createLevel() {
-        for (let y = 0; y < this.height; y += 50) {
-            for (let x = 0; x < this.width; x += 50) {
-                this.tiles.push(new Tile(this, x, y, true, true));
-            }
-        }
-
-        for (let i = 0; i < this.tiles.length; i++) {
-            if (this.tiles[i].x === 0 || this.tiles[i].y === 0) {
-                this.tiles[i].accessible = false;
-                console.log(this.tiles)
-            }
-        }
-
-    }
-
-    drawLevel() {
-        for (let i = 0; i < this.tiles.length; i++) {
-            if (this.tiles[i].accessible === true) {
-                this.context.fillStyle = "grey";
-                this.tiles[i].draw();
-            } else {
-                this.context.fillStyle = "red";
-                this.tiles[i].draw();
-
-
-            }
-
-
-        }
+        this.player = new Character(this);
     }
 
     start() {
         this.reset();
-        console.log("Game started!");
-        this.createLevel();
+        // console.log("Game started!");
         this.draw();
-        console.log(this.tiles);
         this.animation();
     }
 
     reset() {
-        this.player = new Player(this);
-        this.player.setControls(); // calls a method of the player within the game constructor
+        this.player = new Character(this);
+        this.player.setControls();
         this.frame = 0;
         this.gameOn = true;
     }
 
+    drawFrameRate() {
+        //  We see which second it currently is in Unix Time, and if it's the same one as it was last frame we add to the frame count. If not, we set the framesLastSecond to the current frame count, reset the frame count to 0, and update the current second:
+
+        
+        this.context.font = "10pt sans-serif";
+        this.context.fillStyle = "#ff0000";
+        this.context.fillText("FPS: " + this.framesLastSecond, 10, 20)
+    }
+
+
     draw() {
-
-        this.drawLevel();
-        this.player.erase();
+        this.map.draw();
         this.player.draw();
-
+        this.drawFrameRate();
     }
 
     update() {
-        this.player.update();
-
-
-         for (let i = 0; i < this.tiles.length; i++) {
-         if (this.tiles[i].accessible===true && this.player.tileLimits(this.tiles[i])) {
-             // stop the animation if the player walks on a non-accessible tile
-            
-         }
-
+        // increase frameCount if the current second in the game animation is equal to the current second now
+        let sec = Math.floor(Date.now() / 1000);
+        if (sec != this.currentSecond) {
+            this.currentSecond = sec;
+            this.framesLastSecond = this.frameCount;
+            this.frameCount = 1;
+        } else {
+            this.frameCount++;
         }
 
+        // calculates current frame time?
+        this.currentFrameTime = Date.now();
+        this.timeElapsed = this.currentFrameTime - this.lastFrameTime;
 
+        // launches update method of the player in order to render movement animation
+        this.player.update();
     }
 
     animation() {
@@ -94,6 +76,7 @@ class Game {
             }
 
         });
+
 
     }
 }

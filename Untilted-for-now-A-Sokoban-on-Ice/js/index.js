@@ -1,12 +1,11 @@
 const canvas = document.querySelector("canvas");
-const game = new Game(canvas);
+let currentLevel = level1;
 
-function imageOnLoad() {
-    game.draw();
-}
+const game = new Game(canvas, currentLevel);
 
 window.addEventListener("keypress", event => {
     if (event.keyCode === 13) {
         game.start();
     }
 });
+
