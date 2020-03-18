@@ -1,7 +1,4 @@
-class Character {
-
-    // The Character class will store the coordinates of the tiles the Character is currently moving from and to (tileFrom, tileTo), the time (in milliseconds) at which the Character began to move (timeMoved), the dimensions of the Character in pixels (dimensions), the true position of the Character on the Canvas in pixels (position), and the time (in milliseconds) it will take the Character to move 1 tile (delayMove).
-
+class Object {
     constructor(game) {
         this.context = game.context;
         this.tileFrom = [1, 1];
@@ -9,14 +6,7 @@ class Character {
         this.timeMoved = 0;
         this.dimensions = [30, 30];
         this.position = [45, 45];
-        this.delayMove = 500;
-        this.keysDown = {
-            37: false,
-            38: false,
-            39: false,
-            40: false,
-            90: false
-        };
+        this.delayMove = 100;
         this.directions = {
             up: 0,
             right: 1,
@@ -24,26 +14,8 @@ class Character {
             left: 3
         };
         this.direction = this.directions.up;
-        this.push=false;
     }
 
-    setControls() {
-
-        window.addEventListener("keydown", event => {
-
-            if (event.keyCode >= 37 && event.keyCode <= 90) {
-                this.keysDown[event.keyCode] = true;
-            }
-
-        });
-
-        window.addEventListener("keyup", event => {
-            if (event.keyCode >= 37 && event.keyCode <= 90) {
-                this.keysDown[event.keyCode] = false;
-            }
-        });
-
-    }
 
     placeAt(x, y) {
 
@@ -66,11 +38,6 @@ class Character {
         // check if the target position matches floorTypes.path or floorTypes.ice value in the game map. If it's not, return false.
         if (game.map.tileTypes[game.map.gameMap[game.map.toIndex(x, y)]].floor != game.map.floorTypes.path &&
             game.map.tileTypes[game.map.gameMap[game.map.toIndex(x, y)]].floor != game.map.floorTypes.ice) {
-            return false;
-        }
-
-        //check if the target position contains a foreign object. 
-        if (game.map.objectsMap[game.map.toIndex(x,y)] != 0) {
             return false;
         }
 
@@ -160,8 +127,6 @@ class Character {
 
             // check if character is on an active tile (e.g. ice)
             let tileFloor = game.map.tileTypes[game.map.gameMap[game.map.toIndex(this.tileFrom[0], this.tileFrom[1])]].floor;
-            // console.log(tileFloor); // <== prints the target floor type
-
             // sliding movement?
             if (tileFloor == game.map.floorTypes.ice) {
                 if (this.canMoveDirection(this.direction)) {
@@ -194,31 +159,24 @@ class Character {
 
     draw() {
         this.context.save();
-        this.context.fillStyle = "pink";
+        this.context.fillStyle = "blue";
         this.context.fillRect(this.position[0], this.position[1],
             this.dimensions[0], this.dimensions[1]);
         this.context.restore();
     }
 
     update() {
-        
 
-        if (!this.processMovement(game.currentFrameTime)) {
-            if (this.keysDown[38] && this.canMoveUp()) {
-                this.moveUp(game.currentFrameTime);
-            } else if (this.keysDown[40] && this.canMoveDown()) {
-                this.moveDown(game.currentFrameTime);
-            } else if (this.keysDown[37] && this.canMoveLeft()) {
-                this.moveLeft(game.currentFrameTime);
-            } else if (this.keysDown[39] && this.canMoveRight()) {
-                this.moveRight(game.currentFrameTime);
-            } else if ((this.keysDown[90]) && (!this.canMoveDown() ||!this.canMoveLeft() || !this.canMoveRight() || !this.canMoveUp() )){
-                console.log("PUSH");
-            }
-        }
+        // if (!this.processMovement(game.currentFrameTime)) {
+        //     if (this.keysDown[38] && this.canMoveUp()) {
+        //         this.moveUp(game.currentFrameTime);
+        //     } else if (this.keysDown[40] && this.canMoveDown()) {
+        //         this.moveDown(game.currentFrameTime);
+        //     } else if (this.keysDown[37] && this.canMoveLeft()) {
+        //         this.moveLeft(game.currentFrameTime);
+        //     } else if (this.keysDown[39] && this.canMoveRight()) {
+        //         this.moveRight(game.currentFrameTime);
+        //     }
+        // }
     }
-
-
-
-
 }

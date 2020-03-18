@@ -10,8 +10,8 @@ class Game {
         this.framesLastSecond = 0;
         this.lastFrameTime = 0;
         this.timeElapsed = 0
-        this.currentFrameTime;
-        this.animationId;
+        this.currentFrameTime = 0;
+        this.animationId = 0;
         this.map = map;
         this.gameOn = true;
         this.player = new Character(this);
@@ -25,9 +25,9 @@ class Game {
     }
 
     reset() {
+        this.map.initializeObjects();
         this.player = new Character(this);
         this.player.setControls();
-        this.frame = 0;
         this.gameOn = true;
     }
 

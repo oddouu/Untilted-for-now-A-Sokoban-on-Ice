@@ -1,7 +1,9 @@
 class Tilemap {
-    constructor(game, map) {
+    constructor(game, map, objectsMap) {
         this.context = game.context;
         this.gameMap = map;
+        this.objectsMap = objectsMap;
+        this.objectsArr = [];
         this.tileW = 40;
         this.tileH = 40;
         this.mapW = 10;
@@ -41,15 +43,38 @@ class Tilemap {
 
     }
 
+    initializeObjects() {
+        for (let y = 0; y < this.mapH; y++) {
+
+            for (let x = 0; x < this.mapH; x++) {
+
+                //creates objects based on objects level map
+                if (this.objectsMap[this.toIndex(x, y)] == 1) {
+                    let tempObject = new Object(game);
+                    tempObject.placeAt(x, y);
+                    this.objectsArr.push(tempObject);
+                    console.log(this.objectsArr);
+                }
+            }
+        }
+    }
+
     draw() {
         for (let y = 0; y < this.mapH; y++) {
 
             for (let x = 0; x < this.mapH; x++) {
-                
+
                 game.context.fillStyle = this.tileTypes[this.gameMap[this.toIndex(x,y)]].colour;
                 game.context.fillRect(x * this.tileW, y * this.tileH, this.tileW, this.tileH);
+
+                for (let i = 0; i < this.objectsArr.length; i++) {
+                    this.objectsArr[i].draw();
+                }
             }
         }
+
+
+
 
 
 
