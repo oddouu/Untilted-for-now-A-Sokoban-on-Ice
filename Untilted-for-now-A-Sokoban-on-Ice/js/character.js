@@ -24,7 +24,6 @@ class Character {
             left: 3
         };
         this.direction = this.directions.up;
-        this.push=false;
     }
 
     setControls() {
@@ -70,8 +69,11 @@ class Character {
         }
 
         //check if the target position contains a foreign object. 
-        if (game.map.objectsMap[game.map.toIndex(x,y)] != 0) {
-            return false;
+        for (let i = 0; i < game.map.objectsArr.length; i++) {
+            if (game.map.objectsMap[game.map.toIndex(x, y)] != 0) {
+                return false;
+            }
+            
         }
 
         // if all these checks are passed, return true.
@@ -201,21 +203,68 @@ class Character {
     }
 
     update() {
-        
 
         if (!this.processMovement(game.currentFrameTime)) {
-            if (this.keysDown[38] && this.canMoveUp()) {
-                this.moveUp(game.currentFrameTime);
-            } else if (this.keysDown[40] && this.canMoveDown()) {
-                this.moveDown(game.currentFrameTime);
-            } else if (this.keysDown[37] && this.canMoveLeft()) {
-                this.moveLeft(game.currentFrameTime);
+
+            if (this.keysDown[38]) {
+                this.direction = this.directions.up;
+
+                if (this.canMoveUp()) {
+                    this.moveUp(game.currentFrameTime);
+                }
+
+            } else if (this.keysDown[40]) {
+                this.direction = this.directions.down;
+
+                if (this.canMoveDown()) {
+                    this.moveDown(game.currentFrameTime);
+                }
+
+            } else if (this.keysDown[37]) {
+                this.direction = this.directions.left;
+
+                if (this.canMoveLeft()) {
+                    this.moveLeft(game.currentFrameTime);
+                }
+
             } else if (this.keysDown[39] && this.canMoveRight()) {
-                this.moveRight(game.currentFrameTime);
-            } else if ((this.keysDown[90]) && (!this.canMoveDown() ||!this.canMoveLeft() || !this.canMoveRight() || !this.canMoveUp() )){
-                console.log("PUSH");
+                this.direction = this.directions.right;
+
+                if (this.canMoveRight()) {
+                    this.moveRight(game.currentFrameTime);
+                }
+
+            } else if ((this.keysDown[90]) && (!this.canMoveDown() || !this.canMoveLeft() || !this.canMoveRight() || !this.canMoveUp())) {
+                this.pushObject();
             }
         }
+    }
+
+    pushObject() {
+        for (let i = 0; i < game.map.objectsArr.length; i++) {
+
+            if (!game.map.objectsArr[i].processMovement(game.currentFrameTime)) {
+
+                // select the object that is facing the character
+                if (
+                    this.direction == this.directions.up &&
+                    this.tileFrom[0] == game.map.objectsArr[i].tileFrom[0] &&
+                    this.tileFrom[1] == game.map.objectsArr[i].tileFrom[1] + 1
+                ) {
+                    if (game.map.objectsArr[i].canMoveUp()) {
+                        // move the object once in the same direction
+                        game.map.objectsArr[i].moveUp(game.currentFrameTime);
+                        // game.map.objectsArr[i].placeAt(game.map.objectsArr[i].tileTo[0],game.map.objectsArr[i].tileTo[1]);
+                        console.log(game.map.objectsArr[i]);
+                    }
+                }
+
+
+            }
+
+        }
+
+
     }
 
 

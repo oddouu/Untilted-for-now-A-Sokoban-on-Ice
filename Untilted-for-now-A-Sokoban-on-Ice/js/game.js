@@ -43,8 +43,10 @@ class Game {
 
     draw() {
         this.map.draw();
-        this.player.draw();
         this.drawFrameRate();
+        this.player.draw();
+
+        
     }
 
     update() {
@@ -64,6 +66,7 @@ class Game {
 
         // launches update method of the player in order to render movement animation
         this.player.update();
+
     }
 
     animation() {

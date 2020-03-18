@@ -168,6 +168,11 @@ class Object {
     update() {
 
         // if (!this.processMovement(game.currentFrameTime)) {
+        //     if ((this.keysDown[90]) && (!game.player.canMoveDown() || !game.player.canMoveLeft() || !game.player.canMoveRight() || !game.player.canMoveUp())) {
+        //         game.player.pushObject();
+        //     }
+        // }
+        // if (!this.processMovement(game.currentFrameTime)) {
         //     if (this.keysDown[38] && this.canMoveUp()) {
         //         this.moveUp(game.currentFrameTime);
         //     } else if (this.keysDown[40] && this.canMoveDown()) {

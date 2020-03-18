@@ -53,7 +53,7 @@ class Tilemap {
                     let tempObject = new Object(game);
                     tempObject.placeAt(x, y);
                     this.objectsArr.push(tempObject);
-                    console.log(this.objectsArr);
+                    // console.log(this.objectsArr);
                 }
             }
         }
@@ -69,14 +69,11 @@ class Tilemap {
 
                 for (let i = 0; i < this.objectsArr.length; i++) {
                     this.objectsArr[i].draw();
+                    
+
                 }
             }
         }
-
-
-
-
-
 
     }
 
@@ -84,6 +81,10 @@ class Tilemap {
     //index = row * map.cols + column
     toIndex(x, y) {
         return ((y * this.mapW) + x);
+    }
+
+    update() {
+        this.draw();
     }
 
 }
