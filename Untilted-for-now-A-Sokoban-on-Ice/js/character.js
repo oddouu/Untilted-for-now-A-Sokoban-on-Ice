@@ -43,10 +43,10 @@ class Character {
 
                 // if the action key is pressed, set a timeout in order to "keep it pressed" and process the object movement
                 if (this.keysDown[90] == true) {
-                    console.log(this.keysDown[event.keyCode]);
+                    // console.log(this.keysDown[event.keyCode]);
                     setTimeout(() => {
                         this.keysDown[event.keyCode] = false;
-                        console.log(this.keysDown[event.keyCode]);
+                        // console.log(this.keysDown[event.keyCode]);
                     }, 500);
                 } else
 
@@ -279,7 +279,7 @@ class Character {
                         game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.up;
                         game.map.objectsArr[i].moveUp(game.currentFrameTime);
                         // game.map.objectsArr[i].placeAt(game.map.objectsArr[i].tileTo[0],game.map.objectsArr[i].tileTo[1]);
-                        console.log(game.map.objectsArr[i]);
+                        // console.log(game.map.objectsArr[i]);
                     }
 
                     // repeats it for the other directions
@@ -291,7 +291,7 @@ class Character {
                     if (game.map.objectsArr[i].canMoveRight()) {
                         game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.right;
                         game.map.objectsArr[i].moveRight(game.currentFrameTime);
-                        console.log(game.map.objectsArr[i]);
+                        // console.log(game.map.objectsArr[i]);
                     }
                 } else if (
                     this.direction == this.directions.down &&
@@ -301,7 +301,7 @@ class Character {
                     if (game.map.objectsArr[i].canMoveDown()) {
                         game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.down;
                         game.map.objectsArr[i].moveDown(game.currentFrameTime);
-                        console.log(game.map.objectsArr[i]);
+                        // console.log(game.map.objectsArr[i]);
                     }
                 } else if (
                     this.direction == this.directions.left &&
@@ -311,7 +311,7 @@ class Character {
                     if (game.map.objectsArr[i].canMoveLeft()) {
                         game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.left;
                         game.map.objectsArr[i].moveLeft(game.currentFrameTime);
-                        console.log(game.map.objectsArr[i]);
+                        // console.log(game.map.objectsArr[i]);
                     }
                 }
 

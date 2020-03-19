@@ -49,6 +49,22 @@ class Game {
 
     }
 
+    finishLevel() {
+        for (let y = 0; y < this.map.mapH; y++) {
+
+            for (let x = 0; x < this.map.mapH; x++) {
+
+                for (let i = 0; i < this.map.objectsArr.length; i++) {
+                    if (this.map.gameMap[this.map.toIndex(x, y)] == 2) {
+                        if (x == this.map.objectsArr[i].tileFrom[0] & y == this.map.objectsArr[i].tileFrom[1]) {
+                            // console.log("YOU WON");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     update() {
         // increase frameCount if the current second in the game animation is equal to the current second now
         let sec = Math.floor(Date.now() / 1000);
@@ -66,6 +82,9 @@ class Game {
 
         // launches update method of the player in order to render movement animation
         this.player.update();
+
+        // checks if level is finished
+        this.finishLevel();
 
     }
 
