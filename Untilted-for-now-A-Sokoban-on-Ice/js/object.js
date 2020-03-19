@@ -14,6 +14,9 @@ class Object {
             left: 3
         };
         this.direction = this.directions.up;
+        // this.keysDown = {
+        //     90: false
+        // };
     }
 
 
@@ -40,6 +43,9 @@ class Object {
             game.map.tileTypes[game.map.gameMap[game.map.toIndex(x, y)]].floor != game.map.floorTypes.ice) {
             return false;
         }
+
+        // check if the target position contains a player. If it does, return false
+
 
         // if all these checks are passed, return true.
         return true;
@@ -165,10 +171,39 @@ class Object {
         this.context.restore();
     }
 
+    // setControls() {
+
+    //     window.addEventListener("keydown", event => {
+
+    //         if (event.keyCode >= 37 && event.keyCode <= 90) {
+    //             if (event.keyCode === 90) {
+    //                 setTimeout(function () {
+    //                     this.keysDown[event.keyCode] = true;
+    //                 }, 1500);
+    //             } else {
+    //                 this.keysDown[event.keyCode] = true;
+    //             }
+    //         }
+
+    //     });
+
+    //     window.addEventListener("keyup", event => {
+    //         if (event.keyCode >= 37 && event.keyCode <= 90) {
+    //             if (event.keyCode === 90) {
+    //                 setTimeout(function () {
+    //                     this.keysDown[event.keyCode] = false;
+    //                 }, 1500);
+    //             } else {
+    //                 this.keysDown[event.keyCode] = false;
+    //             }
+    //         }
+    //     });
+    // }
+
     update() {
 
+
         // if (!this.processMovement(game.currentFrameTime)) {
-        //     if ((this.keysDown[90]) && (!game.player.canMoveDown() || !game.player.canMoveLeft() || !game.player.canMoveRight() || !game.player.canMoveUp())) {
         //         game.player.pushObject();
         //     }
         // }
@@ -184,4 +219,5 @@ class Object {
         //     }
         // }
     }
+
 }

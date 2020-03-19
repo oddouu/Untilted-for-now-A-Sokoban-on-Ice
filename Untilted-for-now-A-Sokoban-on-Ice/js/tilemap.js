@@ -64,16 +64,22 @@ class Tilemap {
 
             for (let x = 0; x < this.mapH; x++) {
 
-                game.context.fillStyle = this.tileTypes[this.gameMap[this.toIndex(x,y)]].colour;
+                game.context.fillStyle = this.tileTypes[this.gameMap[this.toIndex(x, y)]].colour;
                 game.context.fillRect(x * this.tileW, y * this.tileH, this.tileW, this.tileH);
 
                 for (let i = 0; i < this.objectsArr.length; i++) {
                     this.objectsArr[i].draw();
-                    
 
+                    if (this.objectsMap[this.toIndex(x, y)] == 0 && this.objectsArr[i].tileFrom[0] == x && this.objectsArr[i].tileFrom[1] == y) {
+                        this.objectsMap[this.toIndex(x, y)] = 1;
+
+                    } else {
+                        this.objectsMap[this.toIndex(x, y)] = 0;
+                    }
                 }
             }
         }
+
 
     }
 
@@ -85,6 +91,9 @@ class Tilemap {
 
     update() {
         this.draw();
+        // for (let i = 0; i < this.objectsArr.length; i++) {
+        //     this.objectsArr[i].setControls();
+        // }
     }
 
 }

@@ -34,12 +34,28 @@ class Character {
                 this.keysDown[event.keyCode] = true;
             }
 
+
+
         });
 
         window.addEventListener("keyup", event => {
             if (event.keyCode >= 37 && event.keyCode <= 90) {
-                this.keysDown[event.keyCode] = false;
+
+                // if the action key is pressed, set a timeout in order to "keep it pressed" and process the object movement
+                if (this.keysDown[90] == true) {
+                    console.log(this.keysDown[event.keyCode]);
+                    setTimeout(() => {
+                        this.keysDown[event.keyCode] = false;
+                        console.log(this.keysDown[event.keyCode]);
+                    }, 500);
+                } else
+
+                // the other keys keyup behavior should be normal
+                {
+                    this.keysDown[event.keyCode] = false;
+                }
             }
+
         });
 
     }
@@ -69,12 +85,15 @@ class Character {
         }
 
         //check if the target position contains a foreign object. 
+
         for (let i = 0; i < game.map.objectsArr.length; i++) {
-            if (game.map.objectsMap[game.map.toIndex(x, y)] != 0) {
+            if (x == game.map.objectsArr[i].tileFrom[0] &&
+                y == game.map.objectsArr[i].tileFrom[1]) {
                 return false;
+
             }
-            
         }
+
 
         // if all these checks are passed, return true.
         return true;
@@ -152,6 +171,7 @@ class Character {
 
     }
 
+    // processes character movement by obtaining the time the movement was requested
     processMovement(t) {
         if (this.tileFrom[0] == this.tileTo[0] && this.tileFrom[1] == this.tileTo[1]) {
             return false;
@@ -234,7 +254,9 @@ class Character {
                     this.moveRight(game.currentFrameTime);
                 }
 
-            } else if ((this.keysDown[90]) && (!this.canMoveDown() || !this.canMoveLeft() || !this.canMoveRight() || !this.canMoveUp())) {
+            } else if ((this.keysDown[90])
+                // && (!this.canMoveDown() || !this.canMoveLeft() || !this.canMoveRight() || !this.canMoveUp())
+            ) {
                 this.pushObject();
             }
         }
@@ -243,6 +265,7 @@ class Character {
     pushObject() {
         for (let i = 0; i < game.map.objectsArr.length; i++) {
 
+            // calls the processMovement method of each object by iterating through them
             if (!game.map.objectsArr[i].processMovement(game.currentFrameTime)) {
 
                 // select the object that is facing the character
@@ -253,8 +276,41 @@ class Character {
                 ) {
                     if (game.map.objectsArr[i].canMoveUp()) {
                         // move the object once in the same direction
+                        game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.up;
                         game.map.objectsArr[i].moveUp(game.currentFrameTime);
                         // game.map.objectsArr[i].placeAt(game.map.objectsArr[i].tileTo[0],game.map.objectsArr[i].tileTo[1]);
+                        console.log(game.map.objectsArr[i]);
+                    }
+
+                    // repeats it for the other directions
+                } else if (
+                    this.direction == this.directions.right &&
+                    this.tileFrom[0] == (game.map.objectsArr[i].tileFrom[0] - 1) &&
+                    this.tileFrom[1] == game.map.objectsArr[i].tileFrom[1]
+                ) {
+                    if (game.map.objectsArr[i].canMoveRight()) {
+                        game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.right;
+                        game.map.objectsArr[i].moveRight(game.currentFrameTime);
+                        console.log(game.map.objectsArr[i]);
+                    }
+                } else if (
+                    this.direction == this.directions.down &&
+                    this.tileFrom[0] == game.map.objectsArr[i].tileFrom[0] &&
+                    this.tileFrom[1] == (game.map.objectsArr[i].tileFrom[1] - 1)
+                ) {
+                    if (game.map.objectsArr[i].canMoveDown()) {
+                        game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.down;
+                        game.map.objectsArr[i].moveDown(game.currentFrameTime);
+                        console.log(game.map.objectsArr[i]);
+                    }
+                } else if (
+                    this.direction == this.directions.left &&
+                    this.tileFrom[0] == (game.map.objectsArr[i].tileFrom[0] + 1) &&
+                    this.tileFrom[1] == game.map.objectsArr[i].tileFrom[1]
+                ) {
+                    if (game.map.objectsArr[i].canMoveLeft()) {
+                        game.map.objectsArr[i].direction = game.map.objectsArr[i].directions.left;
+                        game.map.objectsArr[i].moveLeft(game.currentFrameTime);
                         console.log(game.map.objectsArr[i]);
                     }
                 }

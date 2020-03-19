@@ -9,7 +9,7 @@ class Game {
         this.frameCount = 0;
         this.framesLastSecond = 0;
         this.lastFrameTime = 0;
-        this.timeElapsed = 0
+        this.timeElapsed = 0;
         this.currentFrameTime = 0;
         this.animationId = 0;
         this.map = map;
@@ -34,7 +34,7 @@ class Game {
     drawFrameRate() {
         //  We see which second it currently is in Unix Time, and if it's the same one as it was last frame we add to the frame count. If not, we set the framesLastSecond to the current frame count, reset the frame count to 0, and update the current second:
 
-        
+
         this.context.font = "10pt sans-serif";
         this.context.fillStyle = "#ff0000";
         this.context.fillText("FPS: " + this.framesLastSecond, 10, 20)
@@ -46,7 +46,7 @@ class Game {
         this.drawFrameRate();
         this.player.draw();
 
-        
+
     }
 
     update() {
