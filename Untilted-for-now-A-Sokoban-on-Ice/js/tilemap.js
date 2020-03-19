@@ -1,5 +1,5 @@
 class Tilemap {
-    constructor(game, map, objectsMap) {
+    constructor(game, map, objectsMap, playerStartX, playerStartY) {
         this.context = game.context;
         this.gameMap = map;
         this.objectsMap = objectsMap;
@@ -41,6 +41,13 @@ class Tilemap {
             }
         };
 
+        this.playerStartX = playerStartX;
+        this.playerStartY = playerStartY;
+
+    }
+
+    placeCharacter() {
+        game.player.placeAt(this.playerStartX,this.playerStartY);
     }
 
     initializeObjects() {

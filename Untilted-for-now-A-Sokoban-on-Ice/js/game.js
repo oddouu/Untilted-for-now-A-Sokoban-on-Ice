@@ -16,17 +16,18 @@ class Game {
         this.gameOn = true;
         this.player = new Character(this);
     }
-
+    
     start() {
         this.reset();
         // console.log("Game started!");
         this.draw();
         this.animation();
     }
-
+    
     reset() {
         this.map.initializeObjects();
         this.player = new Character(this);
+        this.map.placeCharacter();
         this.player.setControls();
         this.gameOn = true;
     }
@@ -57,7 +58,7 @@ class Game {
                 for (let i = 0; i < this.map.objectsArr.length; i++) {
                     if (this.map.gameMap[this.map.toIndex(x, y)] == 2) {
                         if (x == this.map.objectsArr[i].tileFrom[0] & y == this.map.objectsArr[i].tileFrom[1]) {
-                            // console.log("YOU WON");
+                            console.log("YOU WON");
                         }
                     }
                 }

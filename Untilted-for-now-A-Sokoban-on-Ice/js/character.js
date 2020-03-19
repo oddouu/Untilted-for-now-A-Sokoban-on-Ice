@@ -23,7 +23,7 @@ class Character {
             down: 2,
             left: 3
         };
-        this.direction = this.directions.up;
+        this.direction = this.directions.right;
     }
 
     setControls() {
@@ -67,7 +67,7 @@ class Character {
         this.tileFrom = [x, y];
         this.tileTo = [x, y];
 
-        // calculate position of the Character in the canvas?
+        // calculate position of the Character image within the center of the tile
         this.position = [((game.map.tileW * x) + ((game.map.tileW - this.dimensions[0]) / 2)), ((game.map.tileH * y) + ((game.map.tileH - this.dimensions[1]) / 2))];
 
     }
