@@ -14,22 +14,29 @@ class Game {
         this.animationId = 0;
         this.map = map;
         this.gameOn = true;
+        this.levelCompleted = false;
         this.player = new Character(this);
     }
-    
+
     start() {
         this.reset();
         // console.log("Game started!");
         this.draw();
         this.animation();
     }
-    
+
     reset() {
+        console.clear();
+        
         this.map.initializeObjects();
         this.player = new Character(this);
         this.map.placeCharacter();
         this.player.setControls();
+
+        this.player.pushCount = 0;
+        this.player.movCount = -1;
         this.gameOn = true;
+        this.levelCompleted = false;
     }
 
     drawFrameRate() {
@@ -58,7 +65,8 @@ class Game {
                 for (let i = 0; i < this.map.objectsArr.length; i++) {
                     if (this.map.gameMap[this.map.toIndex(x, y)] == 2) {
                         if (x == this.map.objectsArr[i].tileFrom[0] & y == this.map.objectsArr[i].tileFrom[1]) {
-                            console.log("YOU WON");
+                            this.levelCompleted = true;
+                            // console.log("YOU WON");
                         }
                     }
                 }
@@ -87,6 +95,8 @@ class Game {
         // checks if level is finished
         this.finishLevel();
 
+        // console.log(this.movCount)
+        // console.log(this.pushCount)
     }
 
     animation() {

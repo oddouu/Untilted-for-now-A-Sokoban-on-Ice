@@ -14,9 +14,7 @@ class Object {
             left: 3
         };
         this.direction = this.directions.up;
-        // this.keysDown = {
-        //     90: false
-        // };
+
     }
 
 
@@ -171,53 +169,5 @@ class Object {
         this.context.restore();
     }
 
-    // setControls() {
-
-    //     window.addEventListener("keydown", event => {
-
-    //         if (event.keyCode >= 37 && event.keyCode <= 90) {
-    //             if (event.keyCode === 90) {
-    //                 setTimeout(function () {
-    //                     this.keysDown[event.keyCode] = true;
-    //                 }, 1500);
-    //             } else {
-    //                 this.keysDown[event.keyCode] = true;
-    //             }
-    //         }
-
-    //     });
-
-    //     window.addEventListener("keyup", event => {
-    //         if (event.keyCode >= 37 && event.keyCode <= 90) {
-    //             if (event.keyCode === 90) {
-    //                 setTimeout(function () {
-    //                     this.keysDown[event.keyCode] = false;
-    //                 }, 1500);
-    //             } else {
-    //                 this.keysDown[event.keyCode] = false;
-    //             }
-    //         }
-    //     });
-    // }
-
-    update() {
-
-
-        // if (!this.processMovement(game.currentFrameTime)) {
-        //         game.player.pushObject();
-        //     }
-        // }
-        // if (!this.processMovement(game.currentFrameTime)) {
-        //     if (this.keysDown[38] && this.canMoveUp()) {
-        //         this.moveUp(game.currentFrameTime);
-        //     } else if (this.keysDown[40] && this.canMoveDown()) {
-        //         this.moveDown(game.currentFrameTime);
-        //     } else if (this.keysDown[37] && this.canMoveLeft()) {
-        //         this.moveLeft(game.currentFrameTime);
-        //     } else if (this.keysDown[39] && this.canMoveRight()) {
-        //         this.moveRight(game.currentFrameTime);
-        //     }
-        // }
-    }
 
 }

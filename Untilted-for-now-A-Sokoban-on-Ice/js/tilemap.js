@@ -47,10 +47,11 @@ class Tilemap {
     }
 
     placeCharacter() {
-        game.player.placeAt(this.playerStartX,this.playerStartY);
+        game.player.placeAt(this.playerStartX, this.playerStartY);
     }
 
     initializeObjects() {
+
         for (let y = 0; y < this.mapH; y++) {
 
             for (let x = 0; x < this.mapH; x++) {
