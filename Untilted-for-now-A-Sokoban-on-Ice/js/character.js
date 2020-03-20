@@ -28,6 +28,17 @@ class Character {
         // movement counter is initialized at -1 since the placeAt method is called in the beginning
         this.movCount = -1;
         this.pushCount = 0;
+
+        this.tileset = new Image();
+        this.tileset.src = "http://technologies4.me/examples/gamedev/5-tilesets/tileset.png";
+        this.tileset.onload = game.draw;
+
+        this.sprites = {};
+        this.sprites[this.directions.up] = [{x:0,y:120,w:30,h:30}];
+        this.sprites[this.directions.right] = [{x:0,y:150,w:30,h:30}];
+        this.sprites[this.directions.down] = [{x:0,y:180,w:30,h:30}];
+        this.sprites[this.directions.left] = [{x:0,y:210,w:30,h:30}];
+
     }
 
     setControls() {
@@ -256,6 +267,9 @@ class Character {
         this.context.fillStyle = "pink";
         this.context.fillRect(this.position[0], this.position[1],
             this.dimensions[0], this.dimensions[1]);
+
+            let sprite = this.sprites[this.direction];
+            this.context.drawImage(this.tileset, sprite[0].x, sprite[0].y, sprite[0].w, sprite[0].h, this.position[0], this.position[1], this.dimensions[0], this.dimensions[1] );
         this.context.restore();
     }
 

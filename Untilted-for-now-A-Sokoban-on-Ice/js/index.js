@@ -14,6 +14,11 @@ let indexLevels = 0;
 // creates 'game' variable by using the canvas stored previously and the 'levels' array, initially at position 0 (level 1) 
 let game = new Game(canvas, levels[indexLevels]);
 
+window.addEventListener("load", event => {
+    console.log("AH")
+    game.map.tileset.onload = game.draw;
+});
+
 // event listener for starting the game -> should be a button, but for now is the enter key
 window.addEventListener("keypress", event => {
     if (event.keyCode === 13) {

@@ -15,6 +15,17 @@ class Object {
         };
         this.direction = this.directions.up;
 
+        this.tileset = new Image();
+        this.tileset.src = "http://technologies4.me/examples/gamedev/13-inventories-and-items/tileset.png";
+        this.tileset.onload = game.draw;
+
+        this.sprites = [{
+            x: 240,
+            y: 0,
+            w: 40,
+            h: 40
+        }]
+
     }
 
 
@@ -164,8 +175,12 @@ class Object {
     draw() {
         this.context.save();
         this.context.fillStyle = "blue";
-        this.context.fillRect(this.position[0], this.position[1],
-            this.dimensions[0], this.dimensions[1]);
+        // this.context.fillRect(this.position[0], this.position[1],
+        //     this.dimensions[0], this.dimensions[1]);
+
+        let sprite = this.sprites;
+        this.context.drawImage(this.tileset, sprite[0].x, sprite[0].y, sprite[0].w, sprite[0].h, this.position[0], this.position[1], this.dimensions[0], this.dimensions[1]);
+
         this.context.restore();
     }
 
