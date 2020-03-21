@@ -4,8 +4,8 @@ class Tilemap {
         this.gameMap = map;
         this.objectsMap = objectsMap;
         this.objectsArr = [];
-        this.tileW = 40;
-        this.tileH = 40;
+        this.tileW = 32;
+        this.tileH = 32;
         this.mapW = 10;
         this.mapH = 10;
         this.floorTypes = {
@@ -16,63 +16,69 @@ class Tilemap {
         };
         this.tileTypes = {
             0: {
+                name: "background-boundaries",
                 colour: "#685b48",
                 floor: this.floorTypes.solid,
                 sprite: [{
-                    x: 8,
-                    y: 140,
-                    w: 12,
-                    h: 12,
+                    x: 0,
+                    y: 0,
+                    w: 32,
+                    h: 32,
                 }]
             },
             1: {
+                name: "regular-path",
                 colour: "#5aa457",
                 floor: this.floorTypes.path,
                 sprite: [{
-                    x: 53,
-                    y: 156,
-                    w: 10,
-                    h: 15,
+                    x: 0,
+                    y: 130,
+                    w: 30,
+                    h: 30,
                 }]
             },
             2: {
+                name: "ending-level-path",
                 colour: "#e8bd7a",
                 floor: this.floorTypes.path,
                 sprite: [{
-                    x: 69,
-                    y: 155,
-                    w: 15,
-                    h: 15,
+                    x: 32,
+                    y: 128,
+                    w: 32,
+                    h: 32,
                 }]
             },
             3: {
+                name: "rock-boundaries",
                 colour: "#286625",
                 floor: this.floorTypes.solid,
                 sprite: [{
-                    x: 117,
-                    y: 171,
-                    w: 15,
-                    h: 15,
+                    x: 0,
+                    y: 0,
+                    w: 32,
+                    h: 32,
                 }]
             },
             4: {
+                name: "sign-post",
                 colour: "#678fd9",
-                floor: this.floorTypes.water,
+                floor: this.floorTypes.solid,
                 sprite: [{
-                    x: 187,
-                    y: 250,
-                    w: 15,
-                    h: 15,
+                    x: 288,
+                    y: 96,
+                    w: 30,
+                    h: 30,
                 }]
             },
             5: {
+                name: "ice",
                 colour: "#eeeeff",
                 floor: this.floorTypes.ice,
                 sprite: [{
-                    x: 187,
-                    y: 219,
-                    w: 15,
-                    h: 15,
+                    x: 128,
+                    y: 64,
+                    w: 31,
+                    h: 31,
                 }]
             }
         };
@@ -82,8 +88,8 @@ class Tilemap {
         this.playerStartY = playerStartY;
 
         this.tileset = new Image();
-        this.tileset.src = "https://i.imgur.com/OP3gmeh.png";
-        this.tileset.onload = game.draw;
+        this.tileset.src = "https://i.redd.it/6ijfbw25ld221.png";
+        // this.tileset.onload = game.draw;
 
     }
 
@@ -92,12 +98,12 @@ class Tilemap {
 
             for (let x = 0; x < this.mapH; x++) {
 
-                game.context.fillStyle = this.tileTypes[this.gameMap[this.toIndex(x, y)]].colour;
-                game.context.fillRect(x * this.tileW, y * this.tileH, this.tileW, this.tileH);
+                // game.context.fillStyle = this.tileTypes[this.gameMap[this.toIndex(x, y)]].colour;
+                // game.context.fillRect(x * this.tileW, y * this.tileH, this.tileW, this.tileH);
 
-                let tile = this.tileTypes[this.gameMap[this.toIndex(x,y)]];
+                let tile = this.tileTypes[this.gameMap[this.toIndex(x, y)]];
 
-                game.context.drawImage(this.tileset, tile.sprite[0].x, tile.sprite[0].y, tile.sprite[0].w, tile.sprite[0].h, x * this.tileW, y* this.tileH, this.tileW, this.tileH)
+                game.context.drawImage(this.tileset, tile.sprite[0].x, tile.sprite[0].y, tile.sprite[0].w, tile.sprite[0].h, x * this.tileW, y * this.tileH, this.tileW, this.tileH)
 
                 for (let i = 0; i < this.objectsArr.length; i++) {
                     this.objectsArr[i].draw();

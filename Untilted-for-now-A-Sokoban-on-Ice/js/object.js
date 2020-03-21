@@ -4,7 +4,7 @@ class Object {
         this.tileFrom = [1, 1];
         this.tileTo = [1, 1];
         this.timeMoved = 0;
-        this.dimensions = [30, 30];
+        this.dimensions = [28, 28];
         this.position = [45, 45];
         this.delayMove = 100;
         this.directions = {
@@ -16,14 +16,14 @@ class Object {
         this.direction = this.directions.up;
 
         this.tileset = new Image();
-        this.tileset.src = "http://technologies4.me/examples/gamedev/13-inventories-and-items/tileset.png";
+        this.tileset.src = "https://i.redd.it/6ijfbw25ld221.png";
         this.tileset.onload = game.draw;
 
         this.sprites = [{
-            x: 240,
-            y: 0,
-            w: 40,
-            h: 40
+            x: 256,
+            y: 32,
+            w: 32,
+            h: 32
         }]
 
     }

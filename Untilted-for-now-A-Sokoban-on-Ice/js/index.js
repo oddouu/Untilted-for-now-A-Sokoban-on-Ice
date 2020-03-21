@@ -15,8 +15,7 @@ let indexLevels = 0;
 let game = new Game(canvas, levels[indexLevels]);
 
 window.addEventListener("load", event => {
-    console.log("AH")
-    game.map.tileset.onload = game.draw;
+    game.map.tileset.onload = game.map.draw;
 });
 
 // event listener for starting the game -> should be a button, but for now is the enter key
