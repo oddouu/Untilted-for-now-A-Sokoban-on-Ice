@@ -48,14 +48,42 @@ class Game {
         this.context.fillText("FPS: " + this.framesLastSecond, 10, 20)
     }
 
+    drawPushCount() {
+        this.context.fillStyle = "black";
+        this.context.fillRect(0, 400, this.width, 100);
+        this.context.font = "10pt sans-serif";
+        this.context.fillStyle = "#ff0000";
+        this.context.fillText("push: " + this.player.pushCount, 20,450)
+    }
+
 
     draw() {
         this.map.draw();
         this.drawFrameRate();
         this.player.draw();
-
-
+        this.drawPushCount();
     }
+
+    gameOver() {
+        this.drawMessage("Congratulations! You finished all levels")
+    }
+
+    drawMessage(message) {
+        // let t1 = setInterval(() => {
+            this.context.fillStyle = "black";
+            this.context.fillRect(0, 400, this.width, 100);
+            this.context.font = "10pt sans-serif";
+            this.context.fillStyle = "white";
+            this.context.fillText(message, 20, 450);
+        // }, 500);
+
+        // let t2 = setInterval(() => {
+        //     game.context.fillStyle = "black";
+        //     game.context.fillRect(0, 0, game.width, game.height);
+        // }, 1000);
+    }
+
+
 
     finishLevel() {
         for (let y = 0; y < this.map.mapH; y++) {
@@ -94,6 +122,10 @@ class Game {
 
         // checks if level is finished
         this.finishLevel();
+
+         if (this.levelCompleted) {
+             this.drawMessage("Level completed! Press Z to continue...");
+         }
 
         // console.log(this.movCount)
         // console.log(this.pushCount)
