@@ -6,7 +6,7 @@ class Character {
     this.tileFrom = [1, 1];
     this.tileTo = [1, 1];
     this.timeMoved = 0;
-    this.dimensions = [24, 32];
+    this.dimensions = [30, 40];
     this.position = [45, 45];
     this.delayMove = 500;
     this.keysDown = {
@@ -29,29 +29,85 @@ class Character {
     this.pushCount = 0;
 
     this.tileset = new Image();
-    this.tileset.src = "https://i.ibb.co/pxNbCSV/penguin-gray.png";
+    this.tileset.src = "https://i.imgur.com/qK5hhQj.png";
     // this.tileset.onload = game.draw;
 
     this.sprites = {};
-    this.sprites[this.directions.up] = [
-      { x: 0, y: 0, w: 24, h: 32 },
-      { x: 24, y: 0, w: 24, h: 32 },
-      { x: 48, y: 0, w: 24, h: 32 }
+    this.sprites[this.directions.up] = [{
+        x: 132,
+        y: 189,
+        w: 70,
+        h: 90
+      },
+      {
+        x: 24,
+        y: 0,
+        w: 24,
+        h: 32
+      },
+      {
+        x: 48,
+        y: 0,
+        w: 24,
+        h: 32
+      }
     ];
-    this.sprites[this.directions.right] = [
-      { x: 0, y: 32, w: 24, h: 32 },
-      { x: 24, y: 32, w: 24, h: 32 },
-      { x: 48, y: 32, w: 24, h: 32 }
+    this.sprites[this.directions.right] = [{
+        x: 0,
+        y: 98,
+        w: 70,
+        h: 90
+      },
+      {
+        x: 24,
+        y: 32,
+        w: 24,
+        h: 32
+      },
+      {
+        x: 48,
+        y: 32,
+        w: 24,
+        h: 32
+      }
     ];
-    this.sprites[this.directions.down] = [
-      { x: 0, y: 64, w: 24, h: 32 },
-      { x: 24, y: 64, w: 24, h: 32 },
-      { x: 48, y: 64, w: 24, h: 32 }
+    this.sprites[this.directions.down] = [{
+        x: 70,
+        y: 0,
+        w: 70,
+        h: 90
+      },
+      {
+        x: 24,
+        y: 64,
+        w: 24,
+        h: 32
+      },
+      {
+        x: 48,
+        y: 64,
+        w: 24,
+        h: 32
+      }
     ];
-    this.sprites[this.directions.left] = [
-      { x: 0, y: 96, w: 24, h: 32 },
-      { x: 24, y: 96, w: 24, h: 32 },
-      { x: 48, y: 96, w: 24, h: 32 }
+    this.sprites[this.directions.left] = [{
+        x: 145,
+        y: 0,
+        w: 70,
+        h: 90
+      },
+      {
+        x: 24,
+        y: 96,
+        w: 24,
+        h: 32
+      },
+      {
+        x: 48,
+        y: 96,
+        w: 24,
+        h: 32
+      }
     ];
 
     this.indexSprites = 0;
@@ -111,9 +167,9 @@ class Character {
     // check if the target position matches floorTypes.path or floorTypes.ice value in the game map. If it's not, return false.
     if (
       game.map.tileTypes[game.map.gameMap[game.map.toIndex(x, y)]].floor !=
-        game.map.floorTypes.path &&
+      game.map.floorTypes.path &&
       game.map.tileTypes[game.map.gameMap[game.map.toIndex(x, y)]].floor !=
-        game.map.floorTypes.ice
+      game.map.floorTypes.ice
     ) {
       return false;
     }
@@ -284,23 +340,18 @@ class Character {
 
     let sprite = this.sprites[this.direction];
 
+    this.context.drawImage(
+      this.tileset,
+      sprite[0].x,
+      sprite[0].y,
+      sprite[0].w,
+      sprite[0].h,
+      this.position[0],
+      this.position[1],
+      this.dimensions[0],
+      this.dimensions[1]
+    );
 
-
-          this.context.drawImage(
-              this.tileset,
-              sprite[0].x,
-              sprite[0].y,
-              sprite[0].w,
-              sprite[0].h,
-              this.position[0],
-              this.position[1],
-              this.dimensions[0],
-              this.dimensions[1]
-          );
-    
-
-   
-    this.context.restore();
   }
 
   update() {

@@ -1,3 +1,15 @@
-canvas {
-    border: 2px solid grey;
+body {
+    background-color: black;
+    background-image: url("https://media1.tenor.com/images/3c36c04cf11c44121b2eab10b4d6128c/tenor.gif?itemid=16432213");
+    background-size: cover;
+    background-position: center;
+
 }
+
+.jumbotron {
+    background-color: transparent;
+}
+
+ canvas {
+    background-color: transparent;
+} 

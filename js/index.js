@@ -8,8 +8,8 @@ const canvas = document.getElementById("game");
 // loads all levels into an array. each one of them is contained in separated files, each one has its own map.
 const levels = [
     level1,
-    level2,
-    level3
+    // level2,
+    // level3
 ];
 
 // initialize the index for the levels array to zero
