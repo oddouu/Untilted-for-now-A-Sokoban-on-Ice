@@ -43,16 +43,16 @@ class Game {
         //  We see which second it currently is in Unix Time, and if it's the same one as it was last frame we add to the frame count. If not, we set the framesLastSecond to the current frame count, reset the frame count to 0, and update the current second:
 
 
-        this.context.font = "10pt sans-serif";
+        this.context.font = "10px 'Press Start 2P'";
         this.context.fillStyle = "#ff0000";
         this.context.fillText("FPS: " + this.framesLastSecond, 10, 20)
     }
 
     drawPushCount() {
         this.context.fillStyle = "black";
-        this.context.fillRect(0, 400, this.width, 100);
-        this.context.font = "10pt sans-serif";
-        this.context.fillStyle = "#ff0000";
+        this.context.fillRect(0, 400, this.width - 100, 100);
+        this.context.font = "10px 'Press Start 2P'";
+        this.context.fillStyle = "white";
         this.context.fillText("push: " + this.player.pushCount, 20, 450)
     }
 
@@ -65,7 +65,7 @@ class Game {
     }
 
     gameOver() {
-        this.drawMessage("Congratulations! You finished all levels")
+        this.drawMessage("Congratulations! You finished all levels");
     }
 
     drawMessage(message) {
@@ -74,9 +74,9 @@ class Game {
         if (this.frameCount <= 30) {
             this.context.fillStyle = "black";
             this.context.fillRect(0, 400, this.width, 100);
-            this.context.font = "10pt sans-serif";
+            this.context.font = "8px 'Press Start 2P'";
             this.context.fillStyle = "white";
-            this.context.fillText(message, 70, 430);
+            this.context.fillText(message, 40, 430);
         }
     }
 
@@ -121,7 +121,7 @@ class Game {
         this.finishLevel();
 
         if (this.levelCompleted) {
-            this.drawMessage("Level completed! Press Z to continue...");
+            this.drawMessage("Level completed!" + " Press Z to continue...");
         }
 
         // console.log(this.movCount)

@@ -76,8 +76,8 @@ class Tilemap {
                 colour: "#A7C1C2",
                 floor: this.floorTypes.ice,
                 sprite: [{
-                    x: 140,
-                    y: 490,
+                    x: 630,
+                    y: 280,
                     w: 70,
                     h: 70,
                 }]
@@ -98,11 +98,11 @@ class Tilemap {
         for (let y = 0; y < this.mapH; y++) {
 
             for (let x = 0; x < this.mapH; x++) {
+                let tile = this.tileTypes[this.gameMap[this.toIndex(x, y)]];
 
-                game.context.fillStyle = this.tileTypes[this.gameMap[this.toIndex(x, y)]].colour;
+                game.context.fillStyle = tile.colour;
                 game.context.fillRect(x * this.tileW, y * this.tileH, this.tileW, this.tileH);
 
-                let tile = this.tileTypes[this.gameMap[this.toIndex(x, y)]];
 
                 game.context.drawImage(this.tileset, tile.sprite[0].x, tile.sprite[0].y, tile.sprite[0].w, tile.sprite[0].h, x * this.tileW, y * this.tileH, this.tileW, this.tileH)
 
