@@ -28,6 +28,8 @@ canvas {
     background-color: transparent;
     border-radius: 15px;
     border: 20px solid grey;
+    border-bottom: 40px solid grey;
+    
 }
 
 .btn {

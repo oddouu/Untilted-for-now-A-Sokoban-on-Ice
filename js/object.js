@@ -4,7 +4,7 @@ class Object {
         this.tileFrom = [1, 1];
         this.tileTo = [1, 1];
         this.timeMoved = 0;
-        this.dimensions = [16, 8];
+        this.dimensions = [40, 40];
         this.position = [45, 45];
         this.delayMove = 100;
         this.directions = {
@@ -16,14 +16,14 @@ class Object {
         this.direction = this.directions.up;
 
         this.tileset = new Image();
-        this.tileset.src = "https://i.ibb.co/X4KsYX1/8bit-fish-basic.png";
+        this.tileset.src = "https://i.imgur.com/rFACvzm.png";
         this.tileset.onload = game.draw;
 
         this.sprites = [{
-            x: 16,
-            y: 26,
-            w: 8,
-            h: 4
+            x: 0,
+            y: 0,
+            w: 63,
+            h: 63
         }]
 
     }

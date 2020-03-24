@@ -43,10 +43,10 @@ class Tilemap {
                 colour: "#e8bd7a",
                 floor: this.floorTypes.path,
                 sprite: [{
-                    x: 770,
-                    y: 280,
-                    w: 70,
-                    h: 70,
+                    x: 975,
+                    y: 0,
+                    w: 63,
+                    h: 63,
                 }]
             },
             3: {
@@ -89,7 +89,7 @@ class Tilemap {
         this.playerStartY = playerStartY;
 
         this.tileset = new Image();
-        this.tileset.src = "https://i.imgur.com/0mXMT5u.png";
+        this.tileset.src = "https://i.imgur.com/S5QsFAF.png";
         // this.tileset.onload = game.draw;
 
     }
