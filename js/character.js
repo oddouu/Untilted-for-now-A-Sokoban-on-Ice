@@ -148,8 +148,8 @@ class Character {
     // increases movement counter
     this.movCount++;
 
-    console.log("movCount: ", this.movCount);
-    console.log("pushCount: ", this.pushCount);
+    // console.log("movCount: ", this.movCount);
+    // console.log("pushCount: ", this.pushCount);
 
     // calculate position of the Character image within the center of the tile
     this.position = [
@@ -386,7 +386,7 @@ class Character {
           // console.log(this.movCount)
           // console.log(this.pushCount)
         }
-      } else if (this.keysDown[39] && this.canMoveRight()) {
+      } else if (this.keysDown[39]) {
         this.direction = this.directions.right;
 
         if (this.canMoveRight()) {

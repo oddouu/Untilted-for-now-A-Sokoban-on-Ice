@@ -18,6 +18,7 @@ body {
 
 .jumbotron {
     background-color: transparent;
+    padding-bottom: 30px;
 }
 
 .display-4 {
@@ -27,5 +28,13 @@ body {
 canvas {
     background-color: transparent;
     border-radius: 15px;
-    border: 30px solid grey;
+    border: 20px solid grey;
+}
+
+.btn {
+    font-size: 0.8rem;
+}
+
+#left-side, #right-side {
+    padding-bottom: 140px;
 }

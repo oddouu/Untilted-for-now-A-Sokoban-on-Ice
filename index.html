@@ -11,10 +11,10 @@
 <link href=" https://fonts.googleapis.com/css?family=Open+Sans|Press+Start+2P&display=swap" rel="stylesheet">
 
 
-<!-- Bootstrap CSS -->
-<link rel=" stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="css/styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel=" stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -25,39 +25,66 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
                     <h1 class="display-4">Game title</h1>
                 </div>
             </div>
-            <div class="row flex-row justify-content-between">
-                <div class="col- text-center"> controls:</div>
-                <div class="col- text-center">
+            <div class="row flex-row align-items-center justify-content-between">
+                <section class="col- text-center m-5" id="left-side">
+                    <div class="p-4">CONTROLS</div>
+
+                    <div class="container  btn-group-vertical">
+                        <div class="row flex-column">
+                            <div class="col-">
+                                <div class="p-4">movement:</div>
+                                <button type="button" id="up-btn" class="btn btn-light px-3">Up</button>
+                            </div>
+
+                            <div class="col- btn-group" role="group">
+                                <button type="button" id="lx-btn" class="btn btn-light ">Left</button>
+                                <button type="button" id="dn-btn" class="btn btn-light ">Down</button>
+                                <button type="button" id="rx-btn" class="btn btn-light ">Right</button>
+                            </div>
+                            <div class="col-">
+                                <div class="row">
+                                    <div class="col-">
+                                        <div class="p-4">start:</div>
+                                        <button type="button" id="en-btn" class="btn btn-light">Enter</button>
+                                    </div>
+                                    <div class="col-">
+                                        <div class="p-4">push:</div>
+                                        <button type="button" id="ax-btn" class="btn btn-light">Z</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <section class="col-">
                     <canvas id="game" width="400" height="500"></canvas>
-                </div>
-                <div class="col-">buttons</div>
+                </section>
+                <section class="col- m-5" id="right-side">
+                    <div class="mb-5">LEVEL <br> COMMANDS</div>
+                    <div class="container p-4 ">
+                        <div class="row flex-column align-items-center">
+                            <div class="btn-group col- flex-row" role="group" style= "height: 100px; width: 200px;">
+                                
+                                    <button type="button" id="prev-lv" class="btn btn-light mb-3 "><== Prev. Lv. </button>
+                                    <button type="button" id="next-lv" class="btn btn-light mb-3 ">Next Lv. ==></button>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
             </div>
-            
+
 
         </div>
     </div>
 
 
 
-    <!-- Google Fonts Loader -->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script>
-        WebFont.load({
-            google: {
-                families: ['Press Start 2P']
-            }
-        });
-    </script>
 
-    <!-- game scripts -->
-    <script src="js/tilemap.js"></script>
-    <script src="js/character.js"></script>
-    <script src="js/object.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/level1.js"></script>
-    <script src="js/level2.js"></script>
-    <script src="js/level3.js"></script>
-    <script src="js/index.js"></script>
+
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -70,6 +97,18 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+
+    <!-- game scripts -->
+    <script src="js/tilemap.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/object.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/level1.js"></script>
+    <script src="js/level2.js"></script>
+    <script src="js/level3.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/btn-controls.js"></script>
+
 </body>
 
 </html>
