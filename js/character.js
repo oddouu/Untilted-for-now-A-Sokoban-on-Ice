@@ -8,7 +8,7 @@ class Character {
     this.timeMoved = 0;
     this.dimensions = [30, 40];
     this.position = [45, 45];
-    this.delayMove = 500;
+    this.delayMove = 750;
     this.keysDown = {
       37: false,
       38: false,
@@ -40,16 +40,10 @@ class Character {
         h: 90
       },
       {
-        x: 24,
-        y: 0,
-        w: 24,
-        h: 32
-      },
-      {
-        x: 48,
-        y: 0,
-        w: 24,
-        h: 32
+        x: 70,
+        y: 95,
+        w: 70,
+        h: 90
       }
     ];
     this.sprites[this.directions.right] = [{
@@ -59,16 +53,10 @@ class Character {
         h: 90
       },
       {
-        x: 24,
-        y: 32,
-        w: 24,
-        h: 32
-      },
-      {
-        x: 48,
-        y: 32,
-        w: 24,
-        h: 32
+        x: 65,
+        y: 190,
+        w: 69,
+        h: 90
       }
     ];
     this.sprites[this.directions.down] = [{
@@ -78,16 +66,10 @@ class Character {
         h: 90
       },
       {
-        x: 24,
-        y: 64,
-        w: 24,
-        h: 32
-      },
-      {
-        x: 48,
-        y: 64,
-        w: 24,
-        h: 32
+        x: 67,
+        y: 378,
+        w: 70,
+        h: 90
       }
     ];
     this.sprites[this.directions.left] = [{
@@ -97,20 +79,13 @@ class Character {
         h: 90
       },
       {
-        x: 24,
-        y: 96,
-        w: 24,
-        h: 32
-      },
-      {
-        x: 48,
-        y: 96,
-        w: 24,
-        h: 32
+        x: 145,
+        y: 0,
+        w: 70,
+        h: 90
       }
     ];
 
-    this.indexSprites = 0;
   }
 
   setControls() {
@@ -339,18 +314,75 @@ class Character {
     //     this.dimensions[0], this.dimensions[1]);
 
     let sprite = this.sprites[this.direction];
+    if (!this.processMovement (game.currentFrameTime)) {
+      this.context.drawImage(
+        this.tileset,
+        sprite[0].x,
+        sprite[0].y,
+        sprite[0].w,
+        sprite[0].h,
+        this.position[0],
+        this.position[1],
+        this.dimensions[0],
+        this.dimensions[1]
+        );
 
-    this.context.drawImage(
-      this.tileset,
-      sprite[0].x,
-      sprite[0].y,
-      sprite[0].w,
-      sprite[0].h,
-      this.position[0],
-      this.position[1],
-      this.dimensions[0],
-      this.dimensions[1]
-    );
+    } else if (this.processMovement(game.currentFrameTime)) {
+      if (game.frameCount <= 30) {
+        this.context.drawImage(
+          this.tileset,
+          sprite[1].x,
+          sprite[1].y,
+          sprite[1].w,
+          sprite[1].h,
+          this.position[0],
+          this.position[1],
+          this.dimensions[0],
+          this.dimensions[1]
+        );
+      } else if (game.frameCount > 30) {
+        this.context.drawImage(
+          this.tileset,
+          sprite[0].x,
+          sprite[0].y,
+          sprite[0].w,
+          sprite[0].h,
+          this.position[0],
+          this.position[1],
+          this.dimensions[0],
+          this.dimensions[1]
+        );
+      }
+    }
+
+      // if (this.processMovement(game.currentFrameTime)) {
+        //  if (game.frameCount <= 30) {
+        //    this.context.drawImage(
+        //      this.tileset,
+        //      sprite[1].x,
+        //      sprite[1].y,
+        //      sprite[1].w,
+        //      sprite[1].h,
+        //      this.position[0],
+        //      this.position[1],
+        //      this.dimensions[0],
+        //      this.dimensions[1]
+        //    );
+        //  } else if (game.frameCount > 30) {
+        //     this.context.drawImage(
+        //       this.tileset,
+        //       sprite[0].x,
+        //       sprite[0].y,
+        //       sprite[0].w,
+        //       sprite[0].h,
+        //       this.position[0],
+        //       this.position[1],
+        //       this.dimensions[0],
+        //       this.dimensions[1]
+        //     );
+        //  }
+      // }
+     
 
   }
 

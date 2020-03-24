@@ -4,9 +4,9 @@ class Object {
         this.tileFrom = [1, 1];
         this.tileTo = [1, 1];
         this.timeMoved = 0;
-        this.dimensions = [40, 40];
+        this.dimensions = [35, 35];
         this.position = [45, 45];
-        this.delayMove = 100;
+        this.delayMove = 250;
         this.directions = {
             up: 0,
             right: 1,

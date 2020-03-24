@@ -40,7 +40,7 @@ class Tilemap {
             },
             2: {
                 name: "ending-level-path",
-                colour: "#e8bd7a",
+                colour: "#8AA7A9",
                 floor: this.floorTypes.path,
                 sprite: [{
                     x: 975,
@@ -103,8 +103,13 @@ class Tilemap {
                 game.context.fillStyle = tile.colour;
                 game.context.fillRect(x * this.tileW, y * this.tileH, this.tileW, this.tileH);
 
+                if (tile.colour === "#8AA7A9") {
+                    game.context.drawImage(this.tileset, tile.sprite[0].x, tile.sprite[0].y, tile.sprite[0].w, tile.sprite[0].h, x * this.tileW + 2.5, y * this.tileH + 2.5, this.tileW - 5, this.tileH - 5)
+                } else {
+                    game.context.drawImage(this.tileset, tile.sprite[0].x, tile.sprite[0].y, tile.sprite[0].w, tile.sprite[0].h, x * this.tileW, y * this.tileH, this.tileW, this.tileH)
+                }
 
-                game.context.drawImage(this.tileset, tile.sprite[0].x, tile.sprite[0].y, tile.sprite[0].w, tile.sprite[0].h, x * this.tileW, y * this.tileH, this.tileW, this.tileH)
+
 
                 for (let i = 0; i < this.objectsArr.length; i++) {
                     this.objectsArr[i].draw();
