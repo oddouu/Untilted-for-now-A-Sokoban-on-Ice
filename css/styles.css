@@ -1,13 +1,17 @@
-@import
-url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 
 body {
     background-color: black;
-    background-image: url("https://media1.tenor.com/images/3c36c04cf11c44121b2eab10b4d6128c/tenor.gif?itemid=16432213");
+    background-image: url("https://wallpaperaccess.com/full/1253279.jpg");
     background-size: cover;
     background-position: center;
     font-family: 'Press Start 2P',
-    cursive;
+        cursive;
+    color: white;
+
+    /* avoid scrolling */
+    overflow: hidden;
+
 
 
 }
@@ -20,6 +24,8 @@ body {
     color: white;
 }
 
- canvas {
+canvas {
     background-color: transparent;
-} 
+    border-radius: 15px;
+    border: 30px solid grey;
+}
