@@ -6,7 +6,7 @@ class Object {
         this.timeMoved = 0;
         this.dimensions = [35, 35];
         this.position = [45, 45];
-        this.delayMove = 250;
+        this.delayMove = 200;
         this.directions = {
             up: 0,
             right: 1,
@@ -20,11 +20,21 @@ class Object {
         this.tileset.onload = game.draw;
 
         this.sprites = [{
-            x: 0,
-            y: 0,
-            w: 63,
-            h: 63
-        }]
+                x: 0,
+                y: 0,
+                w: 63,
+                h: 63
+            },
+            {
+                x: 63,
+                y: 0,
+                w: 63,
+                h: 63
+            }
+        ];
+
+        this.special = false;
+
 
     }
 
@@ -53,7 +63,15 @@ class Object {
             return false;
         }
 
-        // check if the target position contains a player. If it does, return false
+        // check if the target position contains another object by accessing the objects array contained in the map. If it does, return false
+            for (let i = 0; i < game.map.objectsArr.length; i++) {
+                if (
+                    x == game.map.objectsArr[i].tileFrom[0] &&
+                    y == game.map.objectsArr[i].tileFrom[1]
+                ) {
+                    return false;
+                }
+            }
 
 
         // if all these checks are passed, return true.
@@ -142,7 +160,7 @@ class Object {
 
             // check if character is on an active tile (e.g. ice)
             let tileFloor = game.map.tileTypes[game.map.gameMap[game.map.toIndex(this.tileFrom[0], this.tileFrom[1])]].floor;
-            // sliding movement?
+            
             if (tileFloor == game.map.floorTypes.ice) {
                 if (this.canMoveDirection(this.direction)) {
                     this.moveDirection(this.direction, t);
@@ -179,7 +197,13 @@ class Object {
         //     this.dimensions[0], this.dimensions[1]);
 
         let sprite = this.sprites;
-        this.context.drawImage(this.tileset, sprite[0].x, sprite[0].y, sprite[0].w, sprite[0].h, this.position[0], this.position[1], this.dimensions[0], this.dimensions[1]);
+
+        if (this.special) {
+            this.context.drawImage(this.tileset, sprite[0].x, sprite[0].y, sprite[0].w, sprite[0].h, this.position[0], this.position[1], this.dimensions[0], this.dimensions[1]);
+        } else {
+            this.context.drawImage(this.tileset, sprite[1].x, sprite[1].y, sprite[1].w, sprite[1].h, this.position[0], this.position[1], this.dimensions[0], this.dimensions[1]);
+            
+        }
 
         this.context.restore();
     }

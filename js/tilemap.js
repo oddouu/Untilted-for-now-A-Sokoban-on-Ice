@@ -136,10 +136,15 @@ class Tilemap {
 
             for (let x = 0; x < this.mapH; x++) {
 
+                let tile = this.objectsMap[this.toIndex(x, y)];
                 //creates objects based on objects level map
-                if (this.objectsMap[this.toIndex(x, y)] == 1) {
+                if (tile !== 0) {
                     let tempObject = new Object(game);
                     tempObject.placeAt(x, y);
+                    
+                    if (tile === 1) {
+                        tempObject.special = true;
+                    }
                     this.objectsArr.push(tempObject);
                     // console.log(this.objectsArr);
                 }

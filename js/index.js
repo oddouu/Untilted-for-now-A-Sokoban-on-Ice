@@ -1,11 +1,19 @@
 // selects the canvas through DOM and saves it into a variable
 const canvas = document.getElementById("game");
+let start = false;
 
 // loads all levels into an array of objects. each one of them is contained in separated files, each one has its own map.
 const levels = [
     {name: "Level 1-1", map: level1},
     {name: "Level 1-2", map: level2},
-    {name: "Level 1-3", map: level3}
+    {name: "Level 1-3", map: level3},
+    {name: "level 1-4", map: level4},
+    {name: "level 1-5", map: level5},
+    {name: "level 2-1", map: level6},
+    {name: "level 2-2", map: level7},
+    {name: "level 2-3", map: level8},
+    {name: "level 2-4", map: level9},
+    {name: "level 2-5", map: level10}
 ];
 
 // function to draw level name
@@ -39,16 +47,14 @@ let t2 = setInterval(() => {
     game.context.fillRect(0, 0, game.width, game.height);
 }, 1000);
 
-// window.addEventListener("load", event => {
-//     game.map.tileset.onload = game.map.draw;
-// });
 
 // event listener for starting the game -> should be a button, but for now is the enter key
 window.addEventListener("keypress", event => {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && !start) {
         game.start();
         clearInterval(t1);
         clearInterval(t2);
+        start = true;
     }
 
     // draws on HUD the level name
@@ -66,7 +72,7 @@ window.addEventListener("keypress", event => {
             drawLevelName();
             game.start();
         } else {
-            game.gameOn = false;
+            // game.gameOn = false;
             game.gameOver();
         }
 

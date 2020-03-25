@@ -10,6 +10,7 @@ const buttonClicked = {
 
 const $prev = document.getElementById("prev-lv");
 const $next = document.getElementById("next-lv");
+const $reset = document.getElementById("reset");
 
 
 // set command buttons through onclick event listeners. using timeouts in order to not interfere with keyboard commands.
@@ -61,6 +62,11 @@ window.onload = () => {
             game.start();
         } else {
             // play error sound
+            indexLevels=0;
+            game.gameOn = false;
+            game = new Game(canvas, levels[indexLevels].map);
+            drawLevelName();
+            game.start();
         }
 
 
@@ -74,10 +80,17 @@ window.onload = () => {
             drawLevelName();
             game.start();
         } else {
+            indexLevels=0;
             game.gameOn = false;
-            game.gameOver();
+            game = new Game(canvas, levels[indexLevels].map);
+            drawLevelName();
+            game.start();
         }
 
     };
+
+    $reset.onclick = () => {
+        // reset level
+    }
     
 };

@@ -8,7 +8,7 @@ class Character {
     this.timeMoved = 0;
     this.dimensions = [30, 40];
     this.position = [45, 45];
-    this.delayMove = 750;
+    this.delayMove = 350;
     this.keysDown = {
       37: false,
       38: false,
@@ -103,7 +103,7 @@ class Character {
           setTimeout(() => {
             this.keysDown[event.keyCode] = false;
             // console.log(this.keysDown[event.keyCode]);
-          }, 500);
+          }, 600);
         }
 
         // the other keys keyup behavior should be normal
@@ -355,33 +355,7 @@ class Character {
       }
     }
 
-      // if (this.processMovement(game.currentFrameTime)) {
-        //  if (game.frameCount <= 30) {
-        //    this.context.drawImage(
-        //      this.tileset,
-        //      sprite[1].x,
-        //      sprite[1].y,
-        //      sprite[1].w,
-        //      sprite[1].h,
-        //      this.position[0],
-        //      this.position[1],
-        //      this.dimensions[0],
-        //      this.dimensions[1]
-        //    );
-        //  } else if (game.frameCount > 30) {
-        //     this.context.drawImage(
-        //       this.tileset,
-        //       sprite[0].x,
-        //       sprite[0].y,
-        //       sprite[0].w,
-        //       sprite[0].h,
-        //       this.position[0],
-        //       this.position[1],
-        //       this.dimensions[0],
-        //       this.dimensions[1]
-        //     );
-        //  }
-      // }
+    
      
 
   }
