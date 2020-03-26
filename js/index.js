@@ -63,81 +63,6 @@ let levels = [{
     }
 ];
 
-// // function to reset levels condition
-// function refreshLevels() {
-
-//     level1 = new Tilemap(game, mapLevelOne, objectsLevelOne, 3, 4);
-//     level2 = new Tilemap(game, mapLevelTwo, objectsLevelTwo, 1, 2);
-//     level3 = new Tilemap(game, mapLevelThree, objectsLevelThree, 1, 1);
-//     level4 = new Tilemap(game, mapLevelFour, objectsLevelFour, 1, 1);
-//     level5 = new Tilemap(game, mapLevelFive, objectsLevelFive, 5, 7);
-//     level6 = new Tilemap(game, mapLevelSix, objectsLevelSix, 3, 4);
-//     level7 = new Tilemap(game, mapLevelSeven, objectsLevelSeven, 0, 1);
-//     level8 = new Tilemap(game, mapLevelEight, objectsLevelEight, 1, 5);
-//     level9 = new Tilemap(game, mapLevelNine, objectsLevelNine, 0, 3);
-//     level10 = new Tilemap(game, mapLevelTen, objectsLevelTen, 1, 1);
-
-//     levels = [{
-//             name: "Level 1-1",
-//             map: level1,
-//             completed: false
-//         },
-//         {
-//             name: "Level 1-2",
-//             map: level2,
-//             completed: false
-//         },
-//         {
-//             name: "Level 1-3",
-//             map: level3,
-//             completed: false
-
-//         },
-//         {
-//             name: "level 1-4",
-//             map: level4,
-//             completed: false
-
-//         },
-//         {
-//             name: "level 1-5",
-//             map: level5,
-//             completed: false
-
-//         },
-//         {
-//             name: "level 2-1",
-//             map: level6,
-//             completed: false
-
-//         },
-//         {
-//             name: "level 2-2",
-//             map: level7,
-//             completed: false
-
-//         },
-//         {
-//             name: "level 2-3",
-//             map: level8,
-//             completed: false
-
-//         },
-//         {
-//             name: "level 2-4",
-//             map: level9,
-//             completed: false
-
-//         },
-//         {
-//             name: "level 2-5",
-//             map: level10,
-//             completed: false
-
-//         }
-//     ];
-
-// }
 
 // function to draw level name
 function drawLevelName() {
@@ -190,12 +115,10 @@ window.addEventListener("keypress", event => {
 
     }
 
-    // draws on HUD the level name
+    // draws on HUD the level name the first time
     drawLevelName();
 
-
-
-    // iterates through levels once the level has been completed. If it's the last level, should show a "thanks for playing screen/animation"
+    // iterates through levels once the level has been completed. If it's the last level, shows a "thanks for playing screen/animation"
     if (game.levelCompleted === true) {
         levels[indexLevels].completed = true;
         if (indexLevels !== levels.length - 1) {

@@ -16,7 +16,7 @@ class Object {
         this.direction = this.directions.up;
 
         this.tileset = new Image();
-        this.tileset.src = "https://i.imgur.com/rFACvzm.png";
+        this.tileset.src = "https://i.imgur.com/nhFZAlG.png";
         this.tileset.onload = game.draw;
 
         this.sprites = [{
@@ -26,10 +26,10 @@ class Object {
                 h: 63
             },
             {
-                x: 63,
-                y: 0,
-                w: 63,
-                h: 63
+                x: 0,
+                y: 66,
+                w: 70,
+                h: 70
             }
         ];
 

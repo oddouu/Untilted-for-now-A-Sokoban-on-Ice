@@ -16,8 +16,21 @@ body {
 
 }
 
+i {
+    font-size: 20px;
+}
+
 .jumbotron {
     background-color: transparent;
+}
+
+.jumbotron hr {
+    color: white
+}
+
+.jumbotron a {
+    text-decoration: none;
+    color: pink;
 }
 
 .display-4 {

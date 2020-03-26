@@ -30,7 +30,6 @@ class Character {
 
     this.tileset = new Image();
     this.tileset.src = "https://i.imgur.com/qK5hhQj.png";
-    // this.tileset.onload = game.draw;
 
     this.sprites = {};
     this.sprites[this.directions.up] = [{
@@ -275,7 +274,7 @@ class Character {
         ].floor;
       // console.log(tileFloor); // <== prints the target floor type
 
-      // sliding movement?
+      // sliding movement
       if (tileFloor == game.map.floorTypes.ice) {
         if (this.canMoveDirection(this.direction)) {
           this.moveDirection(this.direction, t);

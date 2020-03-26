@@ -4,7 +4,6 @@ class Game {
         this.context = canvas.getContext("2d");
         this.width = canvas.width;
         this.height = canvas.height;
-        // referencing the game (this) inside the player class
         this.currentSecond = 0;
         this.frameCount = 0;
         this.framesLastSecond = 0;
@@ -22,29 +21,34 @@ class Game {
     start() {
         this.reset();
         // console.log("Game started!");
+
+        // draws the game the first time, then starts the animation
         this.draw();
         this.animation();
     }
 
     reset() {
+        // reinitialize array of objects attached to the map
         this.map.objectsArr = [];
+        // sets in place the objects of the array
         this.map.initializeObjects();
+        // creates new player
         this.player = new Character(this);
+        // reinitializes player position
         this.map.placeCharacter();
+        // reinitializes event listeners for player controls
         this.player.setControls();
-
+        // reinitializes push count
         this.player.pushCount = 0;
-        this.player.movCount = -1;
+        // turns on animation
         this.gameOn = true;
+        // waits for level completion
         this.levelCompleted = false;
     }
 
     drawFrameRate() {
-        //  We see which second it currently is in Unix Time, and if it's the same one as it was last frame we add to the frame count. If not, we set the framesLastSecond to the current frame count, reset the frame count to 0, and update the current second:
-
-
         this.context.font = "10px 'Press Start 2P'";
-        this.context.fillStyle = "#ff0000";
+        this.context.fillStyle = "white";
         this.context.fillText("FPS: " + this.framesLastSecond, 10, 20)
     }
 
@@ -56,15 +60,15 @@ class Game {
         this.context.fillText("push: " + this.player.pushCount, 20, 450)
     }
 
-
     draw() {
         this.map.draw();
-        this.drawFrameRate();
+        // this.drawFrameRate();
         this.player.draw();
         this.drawPushCount();
     }
 
     confetti() {
+        // draws a little animation for the endgame or any other purpose
         this.context.fillStyle = "black";
         this.context.fillRect(0, 0, this.width, this.height);
 
@@ -144,8 +148,8 @@ class Game {
 
                                 // console.log("YOU WON");
                             } else {
-                                // if it's not special, it destroys the object
-                                this.map.objectsArr.splice(i,1)
+                                // if it's not special, it "destroys" the object
+                                this.map.objectsArr.splice(i,1);
                             }
                         }
                     }
@@ -185,10 +189,9 @@ class Game {
         if (this.endGame) {
            
             this.gameOver();
-            this.drawFrameRate();
+            // this.drawFrameRate();
         }
 
-        // console.log(this.movCount)
         // console.log(this.pushCount)
     }
 

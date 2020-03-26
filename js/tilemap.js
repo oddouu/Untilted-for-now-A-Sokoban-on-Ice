@@ -91,7 +91,8 @@ class Tilemap {
 
         this.tileset = new Image();
         this.tileset.src = "https://i.imgur.com/S5QsFAF.png";
-        // this.tileset.onload = game.draw;
+        // this.tileset.src = "https://i.imgur.com/DXMcSlx.png";
+
 
     }
 
@@ -114,13 +115,6 @@ class Tilemap {
 
                 for (let i = 0; i < this.objectsArr.length; i++) {
                     this.objectsArr[i].draw();
-
-                    // if (this.objectsMap[this.toIndex(x, y)] == 0 && this.objectsArr[i].tileFrom[0] == x && this.objectsArr[i].tileFrom[1] == y) {
-                    //     this.objectsMap[this.toIndex(x, y)] = 1;
-
-                    // } else {
-                    //     this.objectsMap[this.toIndex(x, y)] = 0;
-                    // }
                 }
             }
         }
@@ -138,6 +132,7 @@ class Tilemap {
             for (let x = 0; x < this.mapH; x++) {
 
                 let tile = this.objectsMap[this.toIndex(x, y)];
+
                 //creates objects based on objects level map
                 if (tile !== 0) {
                     let tempObject = new Object(game);
