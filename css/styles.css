@@ -10,8 +10,8 @@ body {
     color: white;
 
     /* avoid scrolling */
-    overflow: hidden;
-
+    /* overflow: hidden; */
+    height: 100vh;
 
 
 }

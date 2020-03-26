@@ -25,4 +25,4 @@ const objectsLevelTwo = [
 ];
 
 
-const level2 = new Tilemap(game, mapLevelTwo, objectsLevelTwo, 1, 2);
+let level2 = new Tilemap(game, mapLevelTwo, objectsLevelTwo, 1, 2);

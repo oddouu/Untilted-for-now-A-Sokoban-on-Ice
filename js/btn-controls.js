@@ -58,15 +58,17 @@ window.onload = () => {
             indexLevels--;
             game.gameOn = false;
             game = new Game(canvas, levels[indexLevels].map);
-            drawLevelName();
             game.start();
+            drawLevelName();
+            highlightCompleted();
         } else {
             // play error sound
             indexLevels=0;
             game.gameOn = false;
             game = new Game(canvas, levels[indexLevels].map);
-            drawLevelName();
             game.start();
+            drawLevelName();
+            highlightCompleted();
         }
 
 
@@ -77,20 +79,26 @@ window.onload = () => {
             indexLevels++;
             game.gameOn = false;
             game = new Game(canvas, levels[indexLevels].map);
-            drawLevelName();
             game.start();
+            drawLevelName();
+            highlightCompleted();
         } else {
             indexLevels=0;
             game.gameOn = false;
             game = new Game(canvas, levels[indexLevels].map);
-            drawLevelName();
             game.start();
+            drawLevelName();
+            highlightCompleted();
         }
 
     };
 
     $reset.onclick = () => {
-        // reset level
+        game.gameOn = false;
+        game = new Game(canvas, levels[indexLevels].map);
+        game.start();
+        drawLevelName();
+        highlightCompleted();
     }
     
 };

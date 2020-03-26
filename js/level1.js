@@ -24,5 +24,4 @@ const objectsLevelOne = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ];
 
-
-const level1 = new Tilemap(game, mapLevelOne, objectsLevelOne, 3, 4);
+let level1 = new Tilemap(game, mapLevelOne, [...objectsLevelOne], 3, 4);

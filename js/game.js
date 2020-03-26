@@ -27,8 +27,7 @@ class Game {
     }
 
     reset() {
-
-
+        this.map.objectsArr = [];
         this.map.initializeObjects();
         this.player = new Character(this);
         this.map.placeCharacter();
@@ -102,8 +101,6 @@ class Game {
         this.endGame = true;
         this.confetti();
         this.drawMessage("Congratulations! You finished all levels");
-
-
     }
 
     drawMessage(message) {

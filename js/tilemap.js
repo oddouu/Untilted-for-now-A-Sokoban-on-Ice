@@ -3,6 +3,7 @@ class Tilemap {
         this.context = game.context;
         this.gameMap = map;
         this.objectsMap = objectsMap;
+        this.objectsMapCopy = [...objectsMap];
         this.objectsArr = [];
         this.tileW = 40;
         this.tileH = 40;
@@ -114,12 +115,12 @@ class Tilemap {
                 for (let i = 0; i < this.objectsArr.length; i++) {
                     this.objectsArr[i].draw();
 
-                    if (this.objectsMap[this.toIndex(x, y)] == 0 && this.objectsArr[i].tileFrom[0] == x && this.objectsArr[i].tileFrom[1] == y) {
-                        this.objectsMap[this.toIndex(x, y)] = 1;
+                    // if (this.objectsMap[this.toIndex(x, y)] == 0 && this.objectsArr[i].tileFrom[0] == x && this.objectsArr[i].tileFrom[1] == y) {
+                    //     this.objectsMap[this.toIndex(x, y)] = 1;
 
-                    } else {
-                        this.objectsMap[this.toIndex(x, y)] = 0;
-                    }
+                    // } else {
+                    //     this.objectsMap[this.toIndex(x, y)] = 0;
+                    // }
                 }
             }
         }
