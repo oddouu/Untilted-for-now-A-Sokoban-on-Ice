@@ -16,9 +16,14 @@ class Game {
         this.levelCompleted = false;
         this.player = new Character(this);
         this.endGame = false;
+
+        this.audioStart = new Audio();
+        this.audioLevelCompleted = new Audio();
+        this.audioGameOver = new Audio();
     }
 
     start() {
+        this.audioStart.play();
         this.reset();
         // console.log("Game started!");
 
@@ -102,6 +107,7 @@ class Game {
     }
 
     gameOver() {
+        this.audioGameOver.play();
         this.endGame = true;
         this.confetti();
         this.drawMessage("Congratulations! You finished all levels");
@@ -145,6 +151,7 @@ class Game {
 
                             if (this.map.objectsArr[i].special === true) {
                                 this.levelCompleted = true;
+                                this.audioLevelCompleted.play();
 
                                 // console.log("YOU WON");
                             } else {
