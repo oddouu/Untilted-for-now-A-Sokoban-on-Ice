@@ -382,7 +382,8 @@ class Character {
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-        // } else {
+       }
+        // else {
         //   this.audioMovementFalse.play();
         // }
       } else if (this.keysDown[40]) {
@@ -395,7 +396,8 @@ class Character {
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-        // } else {
+        } 
+        // else {
         //   this.audioMovementFalse.play();
         // }
       } else if (this.keysDown[37]) {
@@ -408,7 +410,8 @@ class Character {
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-        // } else {
+        } 
+        // else {
         //   this.audioMovementFalse.play();
         // }
       } else if (this.keysDown[39]) {
@@ -421,7 +424,8 @@ class Character {
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-        // } else {
+        } 
+        // else {
         //   this.audioMovementFalse.play();
         // }
       } else if (this.keysDown[90]) {}
