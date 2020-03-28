@@ -85,9 +85,6 @@ class Character {
       }
     ];
 
-    this.audioMovementTrue = new Audio("../assets/sounds/The%20Essential%20Retro%20Video%20Game%20Sound%20Effects%20Collection%20[512%20sounds]/Movement/Footsteps/sfx_movement_footsteps1a.wav");
-    this.audioMovementFalse = new Audio("../assets/sounds/The%20Essential%20Retro%20Video%20Game%20Sound%20Effects%20Collection%20%5B512%20sounds%5D/General%20Sounds/Impacts/sfx_sounds_impact1.wav");
-    this.audioPush = new Audio("../assets/sounds/The%20Essential%20Retro%20Video%20Game%20Sound%20Effects%20Collection%20[512%20sounds]/General%20Sounds/Interactions/sfx_sounds_interaction1.wav");
   }
 
   setControls() {
@@ -215,8 +212,6 @@ class Character {
     this.tileTo[1] -= 1;
     this.timeMoved = t;
     this.direction = this.directions.up;
-    this.audioMovementTrue.play();
-
 
     // this.movCount++;
 
@@ -228,8 +223,6 @@ class Character {
     this.tileTo[1] += 1;
     this.timeMoved = t;
     this.direction = this.directions.down;
-    this.audioMovementTrue.play();
-
 
     // this.movCount++;
 
@@ -241,8 +234,6 @@ class Character {
     this.tileTo[0] -= 1;
     this.timeMoved = t;
     this.direction = this.directions.left;
-    this.audioMovementTrue.play();
-
 
     // this.movCount++;
 
@@ -254,8 +245,6 @@ class Character {
     this.tileTo[0] += 1;
     this.timeMoved = t;
     this.direction = this.directions.right;
-    this.audioMovementTrue.play();
-
 
     // this.movCount++;
 
@@ -324,7 +313,7 @@ class Character {
     //     this.dimensions[0], this.dimensions[1]);
 
     let sprite = this.sprites[this.direction];
-    if (!this.processMovement(game.currentFrameTime)) {
+    if (!this.processMovement (game.currentFrameTime)) {
       this.context.drawImage(
         this.tileset,
         sprite[0].x,
@@ -335,7 +324,7 @@ class Character {
         this.position[1],
         this.dimensions[0],
         this.dimensions[1]
-      );
+        );
 
     } else if (this.processMovement(game.currentFrameTime)) {
       if (game.frameCount <= 30) {
@@ -365,8 +354,8 @@ class Character {
       }
     }
 
-
-
+    
+     
 
   }
 
@@ -377,58 +366,44 @@ class Character {
 
         if (this.canMoveUp()) {
           this.moveUp(game.currentFrameTime);
-          // this.audioMovementTrue.play();
           // this.movCount++;
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-       }
-        // else {
-        //   this.audioMovementFalse.play();
-        // }
+        }
       } else if (this.keysDown[40]) {
         this.direction = this.directions.down;
 
         if (this.canMoveDown()) {
           this.moveDown(game.currentFrameTime);
-          // this.audioMovementTrue.play();
           // this.movCount++;
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-        } 
-        // else {
-        //   this.audioMovementFalse.play();
-        // }
+        }
       } else if (this.keysDown[37]) {
         this.direction = this.directions.left;
 
         if (this.canMoveLeft()) {
           this.moveLeft(game.currentFrameTime);
-          // this.audioMovementTrue.play();
           // this.movCount++;
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-        } 
-        // else {
-        //   this.audioMovementFalse.play();
-        // }
+        }
       } else if (this.keysDown[39]) {
         this.direction = this.directions.right;
 
         if (this.canMoveRight()) {
           this.moveRight(game.currentFrameTime);
-          // this.audioMovementTrue.play();
           // this.movCount++;
 
           // console.log(this.movCount)
           // console.log(this.pushCount)
-        } 
-        // else {
-        //   this.audioMovementFalse.play();
-        // }
-      } else if (this.keysDown[90]) {}
+        }
+      } else if (this.keysDown[90]) {
+        this.pushObject();
+      }
     }
   }
 
@@ -443,10 +418,6 @@ class Character {
           this.tileFrom[1] == game.map.objectsArr[i].tileFrom[1] + 1
         ) {
           if (game.map.objectsArr[i].canMoveUp()) {
-
-            // plays sound
-            // this.audioPush.play();
-
             // move the object once in the same direction
             game.map.objectsArr[i].direction =
               game.map.objectsArr[i].directions.up;
