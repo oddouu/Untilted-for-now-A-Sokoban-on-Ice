@@ -445,7 +445,7 @@ class Character {
           if (game.map.objectsArr[i].canMoveUp()) {
 
             // plays sound
-            this.audioPush.play();
+            // this.audioPush.play();
 
             // move the object once in the same direction
             game.map.objectsArr[i].direction =
