@@ -216,6 +216,7 @@ class Character {
     this.tileTo[1] -= 1;
     this.timeMoved = t;
     this.direction = this.directions.up;
+    this.audioMovementTrue.play();
 
     // this.movCount++;
 
@@ -227,6 +228,8 @@ class Character {
     this.tileTo[1] += 1;
     this.timeMoved = t;
     this.direction = this.directions.down;
+    this.audioMovementTrue.play();
+
 
     // this.movCount++;
 
@@ -238,6 +241,8 @@ class Character {
     this.tileTo[0] -= 1;
     this.timeMoved = t;
     this.direction = this.directions.left;
+    this.audioMovementTrue.play();
+
 
     // this.movCount++;
 
@@ -249,6 +254,8 @@ class Character {
     this.tileTo[0] += 1;
     this.timeMoved = t;
     this.direction = this.directions.right;
+    this.audioMovementTrue.play();
+
 
     // this.movCount++;
 
@@ -317,7 +324,7 @@ class Character {
     //     this.dimensions[0], this.dimensions[1]);
 
     let sprite = this.sprites[this.direction];
-    if (!this.processMovement (game.currentFrameTime)) {
+    if (!this.processMovement(game.currentFrameTime)) {
       this.context.drawImage(
         this.tileset,
         sprite[0].x,
@@ -328,7 +335,7 @@ class Character {
         this.position[1],
         this.dimensions[0],
         this.dimensions[1]
-        );
+      );
 
     } else if (this.processMovement(game.currentFrameTime)) {
       if (game.frameCount <= 30) {
@@ -358,8 +365,8 @@ class Character {
       }
     }
 
-    
-     
+
+
 
   }
 
