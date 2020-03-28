@@ -99,6 +99,6 @@ window.onload = () => {
         game.start();
         drawLevelName();
         highlightCompleted();
-    }
+    };
     
 };
