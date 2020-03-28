@@ -85,9 +85,9 @@ class Character {
       }
     ];
 
-    this.audioMovementTrue = new Audio("../assets/sounds/The Essential Retro Video Game Sound Effects Collection [512 sounds]/Movement/Footsteps/sfx_movement_footsteps1a.wav");
-    this.audioMovementFalse = new Audio("../assets/sounds/The Essential Retro Video Game Sound Effects Collection [512 sounds]/General Sounds/Impacts/sfx_sounds_impact1.wav");
-    this.audioPush = new Audio("../assets/sounds/The Essential Retro Video Game Sound Effects Collection [512 sounds]/General Sounds/Interactions/sfx_sounds_interaction1.wav");
+    this.audioMovementTrue = new Audio();
+    this.audioMovementFalse = new Audio();
+    this.audioPush = new Audio();
 
   }
 
